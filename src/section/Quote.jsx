@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FaQuoteLeft, FaTwitter, FaTumblr } from "react-icons/fa";
+import { FaQuoteLeft,FaQuoteRight, FaTwitter, FaTumblr } from "react-icons/fa";
 import { useSpring, animated } from "react-spring";
 
 const Quote = () => {
@@ -56,58 +56,60 @@ const Quote = () => {
   });
 
   return (
-    <animated.div
-      className="min-h-screen flex items-center justify-center"
-      style={bgAnimation}
-    >
+    <div>
       <animated.div
-        id="quote-box"
-        className="bg-white p-10 rounded shadow-md text-center"
-        style={quoteAnimation}
+        className="min-h-screen flex items-center justify-center font-mono"
+        style={bgAnimation}
       >
-        <div className="quote-text text-2xl font-bold mb-4">
-          <FaQuoteLeft /> <span id="text">{quote}</span>
-        </div>
-        <div className="quote-author text-right text-xl font-semibold mb-4">
-          - <span id="author">{author}</span>
-        </div>
-        <div className="buttons flex justify-between">
-          <a
-            href={`https://twitter.com/intent/tweet?text=${quote} - ${author}`}
-            className="button"
-            id="tweet-quote"
-            title="Tweet this quote!"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: color }}
-          >
-            <FaTwitter className="text-2xl" />
-          </a>
-          <a
-            href={`https://www.tumblr.com/widgets/share/tool?posttype=quote&tags=quotes&caption=${author}&content=${quote}`}
-            className="button"
-            id="tumblr-quote"
-            title="Post this quote on tumblr!"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: color }}
-          >
-            <FaTumblr className="text-2xl" />
-          </a>
-          <button
-            className="button bg-gray-800 text-white px-4 py-2 rounded"
-            id="new-quote"
-            onClick={getQuote}
-            style={{ backgroundColor: color }}
-          >
-            New quote
-          </button>
-        </div>
+        <animated.div
+          id="quote-box"
+          className="bg-white max-w-[40%] p-10 rounded shadow-xl text-center"
+          style={quoteAnimation}
+        >
+          <div className="quote-text flex text-3xl font-bold mb-4">
+            <FaQuoteLeft /> 
+            <span id="text" className="pl-2">{quote}</span>
+            <FaQuoteRight /> 
+          </div>
+          <div className="quote-author text-right text-lg font-light mb-4 tracking-tighter">
+            - <span id="author">{author}</span>
+          </div>
+          <div className="buttons flex justify-between ">
+            <a
+              href={`https://twitter.com/intent/tweet?text=${quote} - ${author}`}
+              className="button  p-2 rounded-md"
+              id="tweet-quote"
+              title="Tweet this quote!"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ bg: color }}
+            >
+              <FaTwitter className="text-2xl" />
+            </a>
+            <a
+              href={`https://www.tumblr.com/widgets/share/tool?posttype=quote&tags=quotes&caption=${author}&content=${quote}`}
+              className="button p-2"
+              id="tumblr-quote"
+              title="Post this quote on tumblr!"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: color }}
+            >
+              <FaTumblr className="text-2xl" />
+            </a>
+            <button
+              className="button bg-gray-800 text-white px-4 py-2 rounded shadow-lg"
+              id="new-quote"
+              onClick={getQuote}
+              style={{ backgroundColor: color }}
+            >
+              New quote
+            </button>
+          </div>
+        </animated.div>
       </animated.div>
-      <footer className="mt-8 text-white">
-        by <a href="tushar-portfolio-lemon.vercel.app">Tushar</a>
-      </footer>
-    </animated.div>
+
+    </div>
   );
 };
 
